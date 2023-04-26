@@ -1,3 +1,5 @@
+//npm run server
+
 import express from 'express';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
@@ -27,7 +29,8 @@ app.post('/', async (req, res) =>
         const prompt = req.body.prompt;
         const response = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `${prompt}`,
+            prompt: `You are a chatbot that provides help to junior software developers looking for projects to do in their free time. 
+            Provide a few projects with bullet points on how to do them with the following languages: ${prompt}`,
             temperature: 0.17,
             max_tokens: 500,
             top_p: 1,
